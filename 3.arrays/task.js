@@ -4,10 +4,7 @@ function compareArrays(arr1, arr2) {
   let result;
 
   // Ваш код
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-  arr1.every((value, i) => value === arr2[i] ? result = true : result = false);
+  result = arr1.length === arr2.length && arr1.every((value, i) => value === arr2[i]);
   return result; // boolean
 }
 
