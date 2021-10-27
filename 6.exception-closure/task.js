@@ -10,11 +10,10 @@ function parseCount(value) {
 
 function validateCount(value) {
     try {
-        parseCount(value);
+        return parseCount(value);
     } catch (err) {
         return err;
     }
-    return parseCount(value);
 }
 
 class Triangle {
@@ -23,7 +22,7 @@ class Triangle {
         this.b = b;
         this.c = c;
 
-        if (this.a + this.b < this.c || this.a + this.c < this.b || this.c + this.b < this.a) {
+        if (a + b < c || a + c < b || c + b < a) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
     }
@@ -31,7 +30,7 @@ class Triangle {
         return this.a + this.b + this.c;
     }
     getArea() {
-        const p = (this.a + this.b + this.c) / 2;
+        const p = this.getPerimeter() / 2;
         const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
         return Number(area.toFixed(3));
     }
