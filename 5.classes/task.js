@@ -74,9 +74,8 @@ class Library {
 
     giveBookByName(bookName) {
         let givingBook = null;
-        let newBookArray = [];
-        this.books.forEach(book => book.name === bookName ? givingBook = book : newBookArray.push(book));
-        this.books = newBookArray;
+        this.books.find(book => book.name === bookName ? givingBook = book : givingBook = null);
+        this.books = this.books.filter(book => book.name !== bookName);
         return givingBook;
     }
 }
