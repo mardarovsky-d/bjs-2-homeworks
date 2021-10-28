@@ -68,13 +68,15 @@ class Library {
 
     findBookBy(type, value) {
         let searchingBook;
-        this.books.forEach(book => book[type] === value ? searchingBook = book : searchingBook = null);
+        this.books.find(book => book[type] === value ? searchingBook = book : searchingBook = null);
         return searchingBook;
     }
 
     giveBookByName(bookName) {
-        let givingBook = null;
-        this.books.find(book => book.name === bookName ? givingBook = book : givingBook = null);
+        let givingBook = this.books.find(book => book.name === bookName);
+        if (givingBook === undefined) {
+            givingBook = null;
+        }
         this.books = this.books.filter(book => book.name !== bookName);
         return givingBook;
     }
